@@ -5,96 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>Terms of Use – Video to Pic</title>
-  <meta name="description" content="Terms of use and subscription terms for the Video to Pic app.">
-  <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #ffffff;
-      --text: #1d1d1f;
-      --secondary: #6e6e73;
-      --link: #0066cc;
-      --separator: #d2d2d7;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #000000;
-        --text: #f5f5f7;
-        --secondary: #a1a1a6;
-        --link: #2997ff;
-        --separator: #424245;
+  <link rel="canonical" href="https://videotophoto.app/terms">
+  <script>
+    // The terms moved to videotophoto.app. Open them in the first of the
+    // reader's languages that the site has, or in English.
+    (function () {
+      var page = "/terms";
+      var languages = ["ar", "ca", "cs", "da", "de", "el", "fi", "he", "hr", "hu",
+        "id", "it", "ja", "ko", "ms", "nb", "nl", "pl", "ro", "ru", "sk", "sl",
+        "sv", "th", "tr", "uk", "vi"];
+      // Same as the site: Spanish in Latin America and the US gets the Mexican
+      // pages, and Portuguese outside Brazil gets Portugal's.
+      var mexicanSpanish = ["419", "ar", "bo", "cl", "co", "cr", "do", "ec", "gt",
+        "hn", "mx", "ni", "pa", "pe", "pr", "py", "sv", "us", "uy", "ve"];
+
+      function prefixFor(tag) {
+        var parts = tag.toLowerCase().split("-");
+        var language = parts[0] === "no" || parts[0] === "nn" ? "nb" : parts[0];
+        var script = "";
+        var region = "";
+        for (var i = 1; i < parts.length; i++) {
+          if (parts[i].length === 4) script = parts[i];
+          else if (!region) region = parts[i];
+        }
+        if (language === "en") return "";
+        if (language === "zh") {
+          var traditional = script ? script === "hant" : /^(tw|hk|mo)$/.test(region);
+          return traditional ? "/zh-hant" : "/zh-hans";
+        }
+        if (language === "pt") return region === "br" ? "/pt-br" : "/pt-pt";
+        if (language === "fr") return region === "ca" ? "/fr-ca" : "/fr";
+        if (language === "es") return mexicanSpanish.indexOf(region) >= 0 ? "/es-mx" : "/es";
+        return languages.indexOf(language) >= 0 ? "/" + language : null;
       }
-    }
-    @media (prefers-contrast: more) {
-      :root { --secondary: var(--text); --link: #0040dd; --separator: #8e8e93; }
-    }
-    @media (prefers-contrast: more) and (prefers-color-scheme: dark) {
-      :root { --link: #6cb4ff; }
-    }
-    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+      var preferred = navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || "en"];
+      var prefix = "";
+      for (var i = 0; i < preferred.length; i++) {
+        var match = prefixFor(preferred[i]);
+        if (match !== null) {
+          prefix = match;
+          break;
+        }
+      }
+      location.replace("https://videotophoto.app" + prefix + page);
+    })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=https://videotophoto.app/terms"></noscript>
+  <style>
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
+      padding: 32px 20px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.0625rem;
       line-height: 1.5;
     }
-    /* On iPhone and iPad, follow the reader's Dynamic Type text size. */
-    @supports (font: -apple-system-body) and (-webkit-touch-callout: none) {
-      body {
-        font: -apple-system-body;
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-        line-height: 1.5;
-      }
-    }
-    main { max-width: 40em; margin: 0 auto; padding: 1.5em 20px 3em; }
-    /* Headings grow more slowly than body text at large sizes, like iOS text styles. */
-    h1 { font-size: calc(1em + 1.0625rem); line-height: 1.15; margin: 0.15em 0 0.2em; letter-spacing: -0.01em; }
-    h2 { font-size: calc(1em + 0.3125rem); line-height: 1.25; margin: 2em 0 0.5em; }
-    p, ul { margin: 0 0 1em; }
-    ul { padding-left: 1.25em; }
-    li { margin: 0 0 0.6em; }
-    .app { color: var(--secondary); font-weight: 600; margin: 0; }
-    .updated { color: var(--secondary); margin: 0 0 1.5em; }
-    a { color: var(--link); text-decoration: underline; text-underline-offset: 0.15em; overflow-wrap: anywhere; }
-    footer { border-top: 1px solid var(--separator); margin-top: 2.5em; padding-top: 1em; color: var(--secondary); }
   </style>
 </head>
 <body>
-<main>
-  <p class="app">Video to Pic</p>
-  <h1>Terms of Use</h1>
-  <p class="updated">Last updated <time datetime="2026-11-04">November 4, 2026</time></p>
-
-  <p>Video to Pic is made by Rifat Monzur (“we”, “us”). Your use of the app is governed by Apple’s <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Licensed Application End User License Agreement</a> (the “Standard EULA”).</p>
-  <p>The rest of this page explains how purchases work and adds a few details. If anything here conflicts with the Standard EULA, the Standard EULA applies.</p>
-
-  <h2>Video to Pic Pro</h2>
-  <p>Pro removes ads and unlocks all Pro features. What’s included and the price are shown in the app before you buy.</p>
-  <ul>
-    <li>Payment is charged to your Apple Account when you confirm the purchase.</li>
-    <li>Subscriptions renew automatically unless auto-renew is turned off at least 24 hours before the end of the current period. Your Apple Account is charged for the renewal within 24 hours before the end of the current period.</li>
-    <li>If a free trial is offered, the paid subscription starts when the trial ends unless you cancel at least 24 hours before then. Any unused part of a free trial is forfeited when you buy a subscription.</li>
-    <li>You can manage or cancel your subscription in Settings › [your name] › Subscriptions.</li>
-    <li>Payments and refunds are handled by Apple. To ask for a refund, visit <a href="https://reportaproblem.apple.com/">reportaproblem.apple.com</a>.</li>
-    <li>On a new device, or after reinstalling the app, tap Restore Purchases on the Pro screen to get Pro back.</li>
-  </ul>
-
-  <h2>Ads</h2>
-  <p>The free version shows ads from Google. The <a href="https://rifat1234.github.io/VideoToPic/">Privacy Policy</a> explains what this means for your data.</p>
-
-  <h2>Your videos and photos</h2>
-  <p>Video to Pic processes your videos on your device. They stay yours, and we never receive them. Please only use videos you have the right to use.</p>
-
-  <h2>Changes</h2>
-  <p>We may update the app and these terms. The date at the top shows when these terms last changed.</p>
-
-  <h2>Contact</h2>
-  <p>Questions? Email <a href="mailto:rifatmonzur@gmail.com">rifatmonzur@gmail.com</a>.</p>
-
-  <footer>
-    <p><a href="https://rifat1234.github.io/VideoToPic/">Privacy Policy</a></p>
-  </footer>
-</main>
+  <p>The Video to Pic Terms of Use are now at <a href="https://videotophoto.app/terms">videotophoto.app/terms</a>.</p>
 </body>
 </html>
